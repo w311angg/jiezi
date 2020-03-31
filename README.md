@@ -3,3 +3,4 @@
 
 [Shell脚本↗](/芥子签到.sh)
 ## 截图
+![GQkwqA.png](https://s1.ax1x.com/2020/03/31/GQkwqA.png)![GQkfqs.png](https://s1.ax1x.com/2020/03/31/GQkfqs.png)![GQACRO.png](https://s1.ax1x.com/2020/03/31/GQACRO.png)![GQAuJf.png](https://s1.ax1x.com/2020/03/31/GQAuJf.png)
