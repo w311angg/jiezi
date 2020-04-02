@@ -20,6 +20,8 @@ curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=1
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=3"
 #玩机一族
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=100"
+#美化资源
+curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=118"
 #王者荣耀
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=110"
 #刺激战场
