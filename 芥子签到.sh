@@ -2,6 +2,8 @@
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=92"
 #薅羊毛
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=104"
+#漂流瓶
+curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=119"
 #游戏破解
 curl "https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key=[_key]&cat_id=101"
 #游戏圈
