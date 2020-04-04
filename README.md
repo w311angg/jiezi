@@ -1,7 +1,13 @@
-# 芥子空间Shell脚本一键签到
+# 芥子空间一键签到
 将脚本中的`[_key]`替换为你抓包得到的`_key`参数。
 
 [Shell脚本↗](/jiezi.sh)
+
+[Python脚本↗](/jiezi.py)
+## 目录
+* [截图](#%E6%88%AA%E5%9B%BE)
+* [折叠安](#%E6%8A%98%E5%8F%A0%E5%AE%89)
+* [来源](#%E6%9D%A5%E6%BA%90)
 ## 截图
 ![GQkwqA.png](https://s1.ax1x.com/2020/03/31/GQkwqA.png)
 ![GQkfqs.png](https://s1.ax1x.com/2020/03/31/GQkfqs.png)
