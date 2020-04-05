@@ -17,5 +17,4 @@
 |图片|图片|
 |:-:|:-:|
 |[![Gl0uin.png](https://s1.ax1x.com/2020/04/01/Gl0uin.png)](https://www.coolapk.com/feed/17724818?shareKey=ODllMzRmNjE4NDEyNWU4Mzg4N2E~)|[![GQmNxf.png](https://s1.ax1x.com/2020/03/31/GQmNxf.png)](https://www.coolapk.com/feed/17725534?shareKey=NDk0ZTU0NGVjMDRhNWU4Mzg3ZDk~)|
-
-[来源(芥子空间API)↗](https://api.bbs.lieyou888.com/category/list/ANDROID/1.0)
+[数据来源(芥子空间API)↗](https://api.bbs.lieyou888.com/category/list/ANDROID/1.0)
