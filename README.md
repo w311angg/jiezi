@@ -2,7 +2,7 @@
 [Python脚本↗](/jiezi.py)
 > 定义`key`环境变量为你抓包得到的`_key`参数
 
-[Shell脚本↗](/jiezi.sh)
+~~[Shell脚本↗](/jiezi.sh)~~
 > *现已停更，请使用上方Python脚本*
 > 
 > 需将脚本中的`[_key]`替换为你抓包得到的`_key`参数
