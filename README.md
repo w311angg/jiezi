@@ -1,3 +1,4 @@
+# 已移至[scripts](https://github.com/w311ang/scripts/tree/master/jiezi)
 # 芥子空间一键签到
 ## [Python↗](/jiezi.py)（推荐）
 ### 特性
