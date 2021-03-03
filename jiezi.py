@@ -19,4 +19,4 @@ if json.loads(云挂机回返)["status"]==1:
   成功=成功+1
 else:
   失败=失败+1
-return str(成功)+" succeeded, "+str(失败)+" failed."
+print(str(成功)+" succeeded, "+str(失败)+" failed.")
