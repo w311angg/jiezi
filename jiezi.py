@@ -14,7 +14,7 @@ for i in 板块列表["categories"]:
       成功=成功+1
     else:
       失败=失败+1
-print('签到成功'+str(成功)+'，签到失败'str(失败))
+print('签到成功'+str(成功)+'，签到失败'+str(失败))
 
 print('\n===开始其他任务===')
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).text
@@ -49,4 +49,4 @@ for one in 状态:
     成功+=1
   else:
     失败+=1
-print('领取成功'+str(成功)+'，领取失败'str(失败))
+print('领取成功'+str(成功)+'，领取失败'+str(失败))
