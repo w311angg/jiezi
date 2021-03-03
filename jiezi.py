@@ -89,6 +89,7 @@ for one in 状态:
     失败+=1
 print('领取成功'+str(成功)+'，领取失败'+str(失败)+'，未完成任务：'+str(未完成))
 
+print('\n===个人信息汇总===')
 信息=requests.get('https://api.bbs.lieyou888.com/user/info/ANDROID/1.1?user_id='+os.getenv('id')+'&_key='+密钥).json()
 print('LV'+str(信息['level'])+'，经验值'+str(信息['exp']))
 挂机=requests.get('https://api.lieyou888.com/card/list/ANDROID/1.0?_key='+密钥).json()['freeTimeCard']
