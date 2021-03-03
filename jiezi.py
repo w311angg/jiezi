@@ -13,7 +13,7 @@ for i in 板块列表["categories"]:
       成功=成功+1
     else:
       失败=失败+1
-云挂机回返=requests.get("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥,data='type=1').text
+云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥,data='type=1').text
 print("云挂机："+云挂机回返)
 if json.loads(云挂机回返)["status"]==1:
   成功=成功+1
