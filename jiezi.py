@@ -64,9 +64,14 @@ for one in 一元任务:
   返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+str(id)).json()
   print(one['title']+'：'+str(返回))
   状态.append(返回['status'])
+未完成=[]
+for one in 一元任务:
+  if one['finished']==0:
+    未完成.append(one['title'])
 for one in 状态:
   if one==1:
     成功+=1
   else:
     失败+=1
 print('领取成功'+str(成功)+'，领取失败'+str(失败))
+print('未完成任务：'+str(未完成))
