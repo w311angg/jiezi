@@ -23,7 +23,8 @@ print("云挂机签到："+云挂机回返)
 一元签到=requests.get('https://api.market.lieyou888.com/sign/click/ANDROID/1.0?_key='+密钥).json()
 print('一元签到：'+str(一元签到))
 
-发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':'水鸭子好看吗','type':0,'title':'你这个漂亮的小水鸭','lat':0.0}).json()
+一言=requests.get('https://v1.hitokoto.cn/').json()['hitokoto']
+发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':一言,'type':0,'title':一言,'lat':0.0}).json()
 print('发帖：'+str(发帖))
 
 分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
