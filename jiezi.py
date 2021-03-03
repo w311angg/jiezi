@@ -36,7 +36,7 @@ for one in 帖子:
 一元任务=requests.get('https://api.market.lieyou888.com/task/daily/list/ANDROID/1.0?_key='+密钥).json()['list']
 for one in 一元任务:
   id=one['id']
-  返回=requests.get(’https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+id).json()
+  返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+id).json()
   print(one['title']+'：'+返回)
   状态.append(返回['status'])
 
