@@ -37,9 +37,10 @@ print('发帖：'+发帖['msg'])
 print('删帖：'+删帖['msg'])
 状态.append(删帖['status'])
 
-分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
-print('分享：'+分享['msg'])
-状态.append(分享['status'])
+for i in range(3):
+  分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
+  print('分享：'+分享['msg'])
+  状态.append(分享['status'])
 
 帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=2').json()['posts']
 for one in 帖子:
