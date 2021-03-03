@@ -33,5 +33,6 @@ jobs:
     - name: Run
       env:
         key: ${{ secrets.key }}
+        login: ${{ secrets.login }}
       run: |
         python jiezi.py
