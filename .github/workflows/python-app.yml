@@ -34,5 +34,6 @@ jobs:
       env:
         key: ${{ secrets.key }}
         login: ${{ secrets.login }}
+        id: ${{ secrets.id }}
       run: |
         python jiezi.py
