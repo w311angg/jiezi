@@ -33,9 +33,10 @@ print('一元签到：'+一元签到['msg'])
 print('发帖：'+发帖['msg'])
 帖子id=发帖['postID']
 状态.append(发帖['status'])
-删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
-print('删帖：'+删帖['msg'])
-状态.append(删帖['status'])
+if 发帖['status']==1:
+  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
+  print('删帖：'+删帖['msg'])
+  状态.append(删帖['status'])
 
 for i in range(3):
   分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
