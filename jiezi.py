@@ -33,8 +33,7 @@ for one in 帖子:
   点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
   print('点赞：'+str(点赞))
 
-一元任务=requests.get('https://api.market.lieyou888.com/task/daily/list/ANDROID/1.0?_key='+密钥).json()
-print(一元任务)
+一元任务=requests.get('https://api.market.lieyou888.com/task/daily/list/ANDROID/1.0?_key='+密钥).json()['list']
 for one in 一元任务:
   id=one['id']
   返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+id).json()
