@@ -56,6 +56,10 @@ print('回复：'+回复['msg'])
 print('删回复：'+删回复['msg'])
 状态.append(删回复['status'])
 
+登录游戏=requests.post('https://sdkapi.1yuan.cn/sdkapi/user/login/gameuser',data=os.getenv('login')).json()
+print('登录游戏：'+登录游戏['message'])
+状态.append(登录游戏['data']['popupStatus'])
+
 for one in 状态:
   if one==1:
     成功+=1
