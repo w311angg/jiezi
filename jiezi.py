@@ -49,4 +49,4 @@ for one in 状态:
     成功+=1
   else:
     失败+=1
-print('成功'+str(成功)+'，失败'str(失败))
+print('领取成功'+str(成功)+'，领取失败'str(失败))
