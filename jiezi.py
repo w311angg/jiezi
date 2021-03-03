@@ -19,7 +19,7 @@ print("云挂机："+云挂机回返.text)
 状态.append(云挂机回返.json()['status'])
 
 一元签到=requests.get('https://api.market.lieyou888.com/sign/click/ANDROID/1.0?_key='+密钥).json()
-print('一元签到：'+一元签到)
+print('一元签到：'+str(一元签到))
 状态.append(一元签到['status'])
 
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':'水鸭子好看吗','type':0,'title':'你这个漂亮的小水鸭','lat':0.0}).json()
