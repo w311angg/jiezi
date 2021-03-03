@@ -93,6 +93,6 @@ print('\n===个人信息汇总===')
 信息=requests.get('https://api.bbs.lieyou888.com/user/info/ANDROID/1.1?user_id='+os.getenv('id')+'&_key='+密钥).json()
 print('LV'+str(信息['level'])+'，经验值'+str(信息['exp']))
 挂机=requests.get('https://api.lieyou888.com/card/list/ANDROID/1.0?_key='+密钥).json()['freeTimeCard']
-print('免费时长'+挂机['formattedBalance'])
+print('免费'+挂机['formattedBalance'])
 一元=requests.get('https://api.market.lieyou888.com/point/account/ANDROID/1.0?_key='+密钥).json()['balance']
 print('一元积分'+str(一元))
