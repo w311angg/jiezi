@@ -31,9 +31,9 @@ print('一元签到：'+一元签到['msg'])
 一言=requests.get('https://v1.hitokoto.cn/').json()['hitokoto']
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':一言,'type':0,'title':一言,'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
-帖子id=发帖['postID']
 状态.append(发帖['status'])
 if 发帖['msg']!='发贴太快了!喝杯茶休息休息':
+  帖子id=发帖['postID']
   删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
   print('删帖：'+删帖['msg'])
   状态.append(删帖['status'])
