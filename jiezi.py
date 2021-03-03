@@ -21,4 +21,4 @@ def main_handler(event,context):
      else:
           失败=失败+1
      return str(成功)+" succeeded, "+str(失败)+" failed."
-main_handler('','')
+main_handler(None,None)
