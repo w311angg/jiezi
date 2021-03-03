@@ -35,6 +35,9 @@ for one in 帖子:
   点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
   print('点赞：'+str(点赞))
 
+回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':一言,'post_id':帖子[3]['postID'],'comment_id':0}).json()
+print('回复：'+str(回复))
+
 print('\n===开始领取一元任务奖励===')
 成功=0
 失败=0
