@@ -33,8 +33,8 @@ print('一元签到：'+一元签到['msg'])
 print('发帖：'+发帖['msg'])
 帖子id=发帖['postID']
 状态.append(发帖['status'])
-删帖=requests.post('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+帖子id+'&_key='+密钥).json()
-print(删帖['msg'])
+删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+帖子id+'&_key='+密钥).json()
+print('删帖：'+删帖['msg'])
 状态.append(删帖['status'])
 
 分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
@@ -49,7 +49,11 @@ for one in 帖子:
 
 回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':一言,'post_id':帖子[3]['postID'],'comment_id':0}).json()
 print('回复：'+回复['msg'])
+回复id=回复['comment_id']
 状态.append(回复['status'])
+删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+回复id+'&_key='+密钥)
+print('删回复：'+删回复['msg'])
+状态.append(删回复['status'])
 
 for one in 状态:
   if one==1:
