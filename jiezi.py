@@ -49,7 +49,7 @@ for one in 帖子:
 
 回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':一言,'post_id':帖子[3]['postID'],'comment_id':0}).json()
 print('回复：'+回复['msg'])
-回复id=回复['comment_id']
+回复id=回复['commentID']
 状态.append(回复['status'])
 删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+str(回复id)+'&_key='+密钥).json()
 print('删回复：'+删回复['msg'])
