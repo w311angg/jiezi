@@ -51,7 +51,7 @@ for one in 帖子:
 print('回复：'+回复['msg'])
 回复id=回复['comment_id']
 状态.append(回复['status'])
-删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+回复id+'&_key='+密钥)
+删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+回复id+'&_key='+密钥).json()
 print('删回复：'+删回复['msg'])
 状态.append(删回复['status'])
 
