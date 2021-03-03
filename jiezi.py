@@ -66,7 +66,7 @@ for one in 状态:
     成功+=1
   else:
     失败+=1
-print('操作成功'+str(成功)+'，操作失败'+str(失败)+'，失败操作：'+状态)
+print('操作成功'+str(成功)+'，操作失败'+str(失败)+'，失败操作：'+str(状态))
 
 print('\n===开始领取一元任务奖励===')
 成功=0
@@ -88,3 +88,10 @@ for one in 状态:
   else:
     失败+=1
 print('领取成功'+str(成功)+'，领取失败'+str(失败)+'，未完成任务：'+str(未完成))
+
+信息=requests.get('https://api.bbs.lieyou888.com/user/info/ANDROID/1.1?user_id='+os.getenv('id')+'&_key='+密钥).json()
+print('LV'+str(信息['level'])+'，经验值'+str(信息['exp']))
+挂机=requests.get('https://api.lieyou888.com/card/list/ANDROID/1.0?_key='+密钥).json()['freeTimeCard']
+print('免费时长'+挂机['formattedBalance'])
+一元=requests.get('https://api.market.lieyou888.com/point/account/ANDROID/1.0?_key='+密钥).json()['balance']
+print('一元积分'+str(一元))
