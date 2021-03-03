@@ -23,21 +23,21 @@ print('一元签到：'+str(一元签到))
 状态.append(一元签到['status'])
 
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':'水鸭子好看吗','type':0,'title':'你这个漂亮的小水鸭','lat':0.0}).json()
-print('发帖：'+发帖)
+print('发帖：'+str(发帖))
 
-分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥)
-print('分享：'+分享)
+分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
+print('分享：'+str(分享))
 
 帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=2').json()['posts']
 for one in 帖子:
-  点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+one['postID']+'&_key='+密钥)
-  print('点赞：'+点赞)
+  点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+one['postID']+'&_key='+密钥).json()
+  print('点赞：'+str(点赞))
 
 一元任务=requests.get('https://api.market.lieyou888.com/task/daily/list/ANDROID/1.0?_key='+密钥).json()['list']
 for one in 一元任务:
   id=one['id']
   返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+id).json()
-  print(one['title']+'：'+返回)
+  print(one['title']+'：'+str(返回))
   状态.append(返回['status'])
 
 print(str(成功)+" succeeded, "+str(失败)+" failed.")
