@@ -5,7 +5,7 @@ import os
 板块列表=json.loads(requests.get("https://api.bbs.lieyou888.com/category/list/ANDROID/1.0?_key="+密钥).text)
 成功=0
 失败=0
-print('\n===开始板块签到===')
+print('===开始板块签到===')
 for i in 板块列表["categories"]:
   if i["categoryID"]!=0:
     板块签到回返=requests.get("https://api.bbs.lieyou888.com/user/signin/ANDROID/1.0?_key="+密钥+"&cat_id="+str(i["categoryID"])).text
