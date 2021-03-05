@@ -57,12 +57,12 @@ print('回复：'+回复['msg'])
 print('删回复：'+删回复['msg'])
 状态.append(删回复['status'])
 
-登录游戏=requests.post('https://sdkapi.1yuan.cn/sdkapi/user/login/gameuser',data=os.getenv('login')).json()
-print('登录游戏：'+登录游戏['message'])
-if 登录游戏['code']==0:
-  状态.append(1)
-else:
-  状态.append(0)
+#登录游戏=requests.post('https://sdkapi.1yuan.cn/sdkapi/user/login/gameuser',data=os.getenv('login')).json()
+#print('登录游戏：'+登录游戏['message'])
+#if 登录游戏['code']==0:
+#  状态.append(1)
+#else:
+#  状态.append(0)
 #print(登录游戏)
 #状态.append(登录游戏['data']['popupStatus'])
 
