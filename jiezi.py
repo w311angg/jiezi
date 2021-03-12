@@ -9,6 +9,7 @@ from email.utils import formataddr
 my_sender=os.getenv('sender')    # 发件人邮箱账号
 my_pass = os.getenv('pass')              # 发件人邮箱密码
 my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
+debug=1
 密钥=os.getenv("key")
 板块列表=json.loads(requests.get("https://api.bbs.lieyou888.com/category/list/ANDROID/1.0?_key="+密钥).text)
 成功=0
@@ -28,12 +29,13 @@ print('\n===开始其他任务===')
 成功=0
 失败=0
 状态=[]
-for i in range(5):
-  time.sleep(2)
-  #保持活跃度以成功云挂机签到
-  看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()
-  print('看社区：'+看社区['msg'])
-  状态.append(看社区['status'])
+if debug==0:
+  for i in range(5):
+    time.sleep(2)
+    #保持活跃度以成功云挂机签到
+    看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()
+    print('看社区：'+看社区['msg'])
+    状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
 def mail():
     print(云挂机回返)
