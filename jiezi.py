@@ -47,7 +47,7 @@ if debug==0:
     print('看社区：'+看社区['msg'])
     状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
-云挂机回返['msg']=None
+#云挂机回返['msg']=None
 if 云挂机回返['msg']!=None:
   print("云挂机签到："+云挂机回返['msg'])
 else:
