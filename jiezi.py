@@ -21,8 +21,10 @@ print('\n===开始其他任务===')
 失败=0
 状态=[]
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
-print(云挂机回返)
-print("云挂机签到："+云挂机回返['msg'])
+if 云挂机回返['status']==1:
+  print("云挂机签到："+云挂机回返['msg'])
+else:
+  print("云挂机签到："+云挂机回返['code'])
 状态.append(云挂机回返['status'])
 
 一元签到=requests.get('https://api.market.lieyou888.com/sign/click/ANDROID/1.0?_key='+密钥).json()
