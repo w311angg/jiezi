@@ -5,7 +5,19 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
+def mail():
+    print(云挂机回返)
+    msg=MIMEText(str(云挂机回返),'plain','utf-8')
+    print(msg)
+    msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+    msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+    msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
  
+    server=smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
+    server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
+    server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+    server.quit()  # 关闭连接
+
 my_sender=os.getenv('sender')    # 发件人邮箱账号
 my_pass = os.getenv('pass')              # 发件人邮箱密码
 my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
@@ -37,18 +49,6 @@ if debug==0:
     print('看社区：'+看社区['msg'])
     状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
-def mail():
-    print(云挂机回返)
-    msg=MIMEText(str(云挂机回返),'plain','utf-8')
-    print(msg)
-    msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-    msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-    msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
- 
-    server=smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
-    server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
-    server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
-    server.quit()  # 关闭连接
 云挂机回返['msg']=None
 if 云挂机回返['msg']!=None:
   print("云挂机签到："+云挂机回返['msg'])
@@ -62,6 +62,7 @@ print('一元签到：'+一元签到['msg'])
 状态.append(一元签到['status'])
 
 一言=requests.get('https://v1.hitokoto.cn/').json()['hitokoto']
+print('一言：'+一言)
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':一言,'type':0,'title':一言,'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
 状态.append(发帖['status'])
