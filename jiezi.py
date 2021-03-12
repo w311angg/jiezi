@@ -15,6 +15,7 @@ def mail():
     server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
     server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
     server.quit()  # 关闭连接
+    print('邮件已发送')
 
 my_sender=os.getenv('sender')    # 发件人邮箱账号
 my_pass = os.getenv('pass')              # 发件人邮箱密码
