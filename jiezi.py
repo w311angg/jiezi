@@ -19,7 +19,7 @@ def mail():
 my_sender=os.getenv('sender')    # 发件人邮箱账号
 my_pass = os.getenv('pass')              # 发件人邮箱密码
 my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
-debug=1
+debug=0
 密钥=os.getenv("key")
 板块列表=json.loads(requests.get("https://api.bbs.lieyou888.com/category/list/ANDROID/1.0?_key="+密钥).text)
 成功=0
