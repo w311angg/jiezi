@@ -10,7 +10,7 @@ my_sender=os.getenv('sender')    # 发件人邮箱账号
 my_pass = os.getenv('pass')              # 发件人邮箱密码
 my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
 def mail():
-    msg=MIMEText(云挂机回返,'plain','utf-8')
+    msg=MIMEText(str(云挂机回返),'plain','utf-8')
     msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
     msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
     msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
@@ -49,7 +49,7 @@ for i in range(10):
 if 云挂机回返['status']==1:
   print("云挂机签到："+云挂机回返['msg'])
 else:
-  print("云挂机签到："+云挂机回返)
+  print("云挂机签到："+str(云挂机回返))
   mail()
 状态.append(云挂机回返['status'])
 
