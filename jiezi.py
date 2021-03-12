@@ -6,9 +6,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 def mail():
-    print(云挂机回返)
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
-    print(msg)
     msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
     msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
     msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
