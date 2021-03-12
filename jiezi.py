@@ -2,6 +2,13 @@ import requests
 import json
 import os
 import time
+import smtplib
+from email.mime.text import MIMEText
+from email.utils import formataddr
+ 
+my_sender=os.getenv('sender')    # 发件人邮箱账号
+my_pass = os.getenv('pass')              # 发件人邮箱密码
+my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
 密钥=os.getenv("key")
 板块列表=json.loads(requests.get("https://api.bbs.lieyou888.com/category/list/ANDROID/1.0?_key="+密钥).text)
 成功=0
@@ -28,7 +35,17 @@ for i in range(5):
   print('看社区：'+str(看社区['msg']))
   状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
-if 云挂机回返['status']==1:
+def mail():
+    msg=MIMEText(str(云挂机回返),'plain','utf-8')
+    msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+    msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+    msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
+ 
+    server=smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
+    server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
+    server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+    server.quit()  # 关闭连接
+if 云挂机回返['msg']!=None:
   print("云挂机签到："+云挂机回返['msg'])
 else:
   print("云挂机签到："+str(云挂机回返))
@@ -112,21 +129,3 @@ print('领取成功'+str(成功)+'，领取失败'+str(失败)+'，未完成任�
 #print('免费'+挂机['formattedBalance'])
 #一元=requests.get('https://api.market.lieyou888.com/point/account/ANDROID/1.0?_key='+密钥).json()['balance']
 #print('一元积分'+str(一元))
-
-import smtplib
-from email.mime.text import MIMEText
-from email.utils import formataddr
- 
-my_sender=os.getenv('sender')    # 发件人邮箱账号
-my_pass = os.getenv('pass')              # 发件人邮箱密码
-my_user=os.getenv('to')      # 收件人邮箱账号，我这边发送给自己
-def mail():
-    msg=MIMEText(str(云挂机回返),'plain','utf-8')
-    msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-    msg['To']=formataddr(["WG",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-    msg['Subject']='云挂机需要手动签到'                # 邮件的主题，也可以说是标题
- 
-    server=smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
-    server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
-    server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
-    server.quit()  # 关闭连接
