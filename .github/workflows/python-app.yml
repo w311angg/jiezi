@@ -35,5 +35,8 @@ jobs:
         key: ${{ secrets.key }}
         login: ${{ secrets.login }}
         id: ${{ secrets.id }}
+        sender: ${{ secrets.sender }}
+        to: ${{ secrets.to }}
+        pass: ${{ secrets.pass }}
       run: |
         python jiezi.py
