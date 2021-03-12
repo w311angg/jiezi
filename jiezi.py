@@ -40,7 +40,7 @@ print('\n===开始其他任务===')
 失败=0
 状态=[]
 for i in range(10):
-  time.sleep(5)
+  time.sleep(2)
   #保持活跃度以成功云挂机签到
   看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()
   print('看社区：'+str(看社区['msg']))
