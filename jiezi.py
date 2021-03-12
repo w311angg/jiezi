@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import time
 密钥=os.getenv("key")
 板块列表=json.loads(requests.get("https://api.bbs.lieyou888.com/category/list/ANDROID/1.0?_key="+密钥).text)
 成功=0
@@ -20,7 +21,14 @@ print('\n===开始其他任务===')
 成功=0
 失败=0
 状态=[]
+for i in range(10):
+  time.sleep(5)
+  #保持活跃度以成功云挂机签到
+  看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()['msg']
+  print('看社区：'+看社区)
+  状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
+print(云挂机回返)
 if 云挂机回返['status']==1:
   print("云挂机签到："+云挂机回返['msg'])
 else:
