@@ -59,7 +59,7 @@ else:
 print('一元签到：'+一元签到['msg'])
 状态.append(一元签到['status'])
 
-一言=requests.get('https://v1.hitokoto.cn/?c=c').json()['hitokoto']
+一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
 print('一言：'+一言)
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':一言,'type':0,'title':一言,'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
