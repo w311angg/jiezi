@@ -32,7 +32,7 @@ for i in range(5):
   time.sleep(2)
   #保持活跃度以成功云挂机签到
   看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()
-  print('看社区：'+str(看社区['msg']))
+  print('看社区：'+看社区['msg'])
   状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
 def mail():
