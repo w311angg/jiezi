@@ -46,11 +46,10 @@ for i in range(10):
   print('看社区：'+str(看社区['msg']))
   状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
-print(云挂机回返)
 if 云挂机回返['status']==1:
   print("云挂机签到："+云挂机回返['msg'])
 else:
-  print("云挂机签到："+str(云挂机回返['code']))
+  print("云挂机签到："+云挂机回返)
   mail()
 状态.append(云挂机回返['status'])
 
