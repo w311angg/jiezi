@@ -126,6 +126,9 @@ for one in 一元成就:
   返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+str(id)).json()
   print(one['title']+'：'+返回['msg'])
   状态.append(返回['status'])
+for one in 一元成就:
+  if one['finished']==0:
+    未完成.append(one['title'])
 for one in 状态:
   if one==1:
     成功+=1
