@@ -134,7 +134,9 @@ for one in 状态:
     成功+=1
   else:
     失败+=1
-print('领取成功'+str(成功)+'，领取失败'+str(失败)+'，未完成任务：'+str(未完成))
+print('领取成功'+str(成功)+'，领取失败'+str(失败)+'，未完成任务：')
+for one in 未完成:
+  print(one)
 
 #print('\n===个人信息汇总===')
 #信息=requests.get('https://api.bbs.lieyou888.com/user/info/ANDROID/1.1?user_id='+os.getenv('id')+'&_key='+密钥).json()
