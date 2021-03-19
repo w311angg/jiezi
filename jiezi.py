@@ -100,12 +100,14 @@ print('删回复：'+删回复['msg'])
 #print(登录游戏)
 #状态.append(登录游戏['data']['popupStatus'])
 
-for one in 状态:
+失败位置=[]
+for one,count in zip(状态,range(1,len(状态)):
   if one==1:
     成功+=1
   else:
     失败+=1
-print('操作成功'+str(成功)+'，操作失败'+str(失败)+'，失败操作：'+str(状态))
+    失败位置.append(count)
+print('操作成功'+str(成功)+'，操作失败'+str(失败)+'，失败操作：'+str(失败位置))
 
 print('\n===开始领取一元任务奖励===')
 成功=0
