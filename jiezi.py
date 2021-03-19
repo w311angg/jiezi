@@ -120,6 +120,12 @@ for one in 一元任务:
 for one in 一元任务:
   if one['finished']==0:
     未完成.append(one['title'])
+一元成就=requests.get('https://api.market.lieyou888.com/task/growth/list/ANDROID/1.0?_key='+密钥).json()['list']
+for one in 一元成就:
+  id=one['id']
+  返回=requests.get('https://api.market.lieyou888.com/task/receive/ANDROID/1.0?_key='+密钥+'&task_id='+str(id)).json()
+  print(one['title']+'：'+返回['msg'])
+  状态.append(返回['status'])
 for one in 状态:
   if one==1:
     成功+=1
