@@ -101,7 +101,7 @@ print('删回复：'+删回复['msg'])
 #状态.append(登录游戏['data']['popupStatus'])
 
 失败位置=[]
-for one,count in zip(状态,range(1,len(状态)):
+for one,count in zip(状态,range(1,len(状态))):
   if one==1:
     成功+=1
   else:
