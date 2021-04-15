@@ -4,7 +4,7 @@ import os
 import time
 import smtplib
 import hlx
-from random import choice
+import random
 from email.mime.text import MIMEText
 from email.utils import formataddr
 def mail():
@@ -65,17 +65,35 @@ print('一元签到：'+一元签到['msg'])
 #一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
 #print('一言：'+一言)
 #状态.append(1)
-print(hlx.posts)
-imgstr=''
-for one in hlx.posts[0]['images']:
-  image=requests.get(one).content
-  file={'file':image}
-  re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
-  url=re['fid']
-  imgstr+=url+','
-发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['title'],'images':imgstr,'lat':0.0}).json()
-print('发帖：'+发帖['msg'])
-状态.append(发帖['status'])
+def 发帖(one):
+  global 状态,count
+  print(hlx.posts)
+  imgstr=''
+  for one in hlx.posts[one]['images']:
+    image=requests.get(one).content
+    file={'file':image}
+    re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
+    url=re['fid']
+    imgstr+=url+','
+  发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[one]['content'],'type':0,'title':'【资源分享】'+hlx.posts[one]['title'],'images':imgstr,'lat':0.0}).json()
+  print('发帖：'+发帖['msg'])
+  if '需要审核' in 发帖['msg']:
+    pid=发帖['postID']
+    审核=True
+    while 审核:
+      time.sleep(10)
+      帖信息=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'_key':密钥,'post_id':pid})
+      msg=帖信息['msg']
+      title=帖信息['title']
+      if msg=='':
+        if title=='/* 话题已删除 */':
+          count+=1
+          发帖(count)
+        else
+          审核=False
+  状态.append(发帖['status'])
+count=0
+发帖(count)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
 #  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
@@ -99,7 +117,7 @@ else:
   评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20,'start':20}).json()['comments']
 是楼主=True
 while 是楼主:
-  随机评论=choice(评论)
+  随机评论=random.choice(评论)
   if 随机评论['user']['userID']!=帖子[3]['user']['userID']:
     评论内容=随机评论['text']
     是楼主=False
