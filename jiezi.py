@@ -66,7 +66,7 @@ print('一元签到：'+一元签到['msg'])
 #print('一言：'+一言)
 #状态.append(1)
 print(hlx.posts)
-发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['content'],'lat':0.0}).json()
+发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['title'],'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
 状态.append(发帖['status'])
 #if 发帖['status']==1:
@@ -93,7 +93,7 @@ else:
 是楼主=True
 while 是楼主:
   随机评论=choice(评论)
-  if 随机评论['userID']!=帖子[3]['user']['userID']:
+  if 随机评论['user']['userID']!=帖子[3]['user']['userID']:
     评论内容=随机评论['text']
     是楼主=False
 回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':评论内容,'post_id':帖子[3]['postID'],'comment_id':0}).json()
