@@ -111,9 +111,9 @@ for one in 帖子:
   状态.append(点赞['status'])
 
 if 帖子[3]['commentCount']<=20:
-  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20}).json()['comments']
+  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20,'sort_by':2}).json()['comments']
 else:
-  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20,'start':20}).json()['comments']
+  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20,'start':20,'sort_by':2}).json()['comments']
 是楼主=True
 while 是楼主:
   随机评论=random.choice(评论)
