@@ -4,7 +4,8 @@ plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count
 posts=[]
 
 for one in plist:
-  pid=one['postID']
-  title=one['title']
-  content=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()['post']['detail']
-  posts.append({'title':title,'content':content})
+  if one['isRich']==0 and one['isAppPost']==0:
+    pid=one['postID']
+    title=one['title'].replace('【资源分享】','')
+    content=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()['post']['detail']
+    posts.append({'title':title,'content':content})
