@@ -3,6 +3,8 @@ import json
 import os
 import time
 import smtplib
+import hlx
+from random import choice
 from email.mime.text import MIMEText
 from email.utils import formataddr
 def mail():
@@ -60,36 +62,39 @@ else:
 print('一元签到：'+一元签到['msg'])
 状态.append(一元签到['status'])
 
-一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
-print('一言：'+一言)
-状态.append(1)
-发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':2,'tag_id':'-1','detail':一言,'type':0,'title':一言,'lat':0.0}).json()
+#一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
+#print('一言：'+一言)
+#状态.append(1)
+发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':posts[0]['content'],'type':0,'title':'【资源分享】'+posts[0]['content'],'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
 状态.append(发帖['status'])
-if 发帖['status']==1:
-  帖子id=发帖['postID']
-  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
-  print('删帖：'+删帖['msg'])
-  状态.append(删帖['status'])
+#if 发帖['status']==1:
+#  帖子id=发帖['postID']
+#  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
+#  print('删帖：'+删帖['msg'])
+#  状态.append(删帖['status'])
 
 for i in range(3):
   分享=requests.get('https://api.market.lieyou888.com/task/perform/ANDROID/1.0?data_type=APP_SHARE&_key='+密钥).json()
   print('分享：'+分享['msg'])
   状态.append(分享['status'])
 
-帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=2').json()['posts']
+帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=92').json()['posts']
 for one in 帖子:
   点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
   print('点赞：'+点赞['msg'])
   状态.append(点赞['status'])
 
+评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':40}).json()['comments']
+if len(评论)<=20:
+  随机评论=choice(评论)['text']
 回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':一言,'post_id':帖子[3]['postID'],'comment_id':0}).json()
 print('回复：'+回复['msg'])
 回复id=回复['commentID']
 状态.append(回复['status'])
-删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+str(回复id)+'&_key='+密钥).json()
-print('删回复：'+删回复['msg'])
-状态.append(删回复['status'])
+#删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+str(回复id)+'&_key='+密钥).json()
+#print('删回复：'+删回复['msg'])
+#状态.append(删回复['status'])
 
 #登录游戏=requests.post('https://sdkapi.1yuan.cn/sdkapi/user/login/gameuser',data=os.getenv('login')).json()
 #print('登录游戏：'+登录游戏['message'])
