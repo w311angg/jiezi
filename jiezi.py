@@ -65,6 +65,7 @@ print('一元签到：'+一元签到['msg'])
 #一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
 #print('一言：'+一言)
 #状态.append(1)
+print(hlx.posts)
 发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['content'],'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
 状态.append(发帖['status'])
