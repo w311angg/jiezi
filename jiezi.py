@@ -65,18 +65,18 @@ print('一元签到：'+一元签到['msg'])
 #一言=requests.get('https://international.v1.hitokoto.cn/?c=i').json()['hitokoto']
 #print('一言：'+一言)
 #状态.append(1)
-def 发帖(one):
-  print(one)
-  global 状态,count
+def 发帖(count):
+  print(count)
+  global 状态
   #print(hlx.posts)
   imgstr=''
-  for one in hlx.posts[one]['images']:
+  for one in hlx.posts[count]['images']:
     image=requests.get(one).content
     file={'file':image}
     re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
     url=re['fid']
     imgstr+=url+','
-  发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[one]['content'],'type':0,'title':'【资源分享】'+hlx.posts[one]['title'],'images':imgstr,'lat':0.0}).json()
+  发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[count]['content'],'type':0,'title':'【资源分享】'+hlx.posts[count]['title'],'images':imgstr,'lat':0.0}).json()
   print('发帖：'+发帖['msg'])
   if '需要审核' in 发帖['msg']:
     pid=发帖['postID']
@@ -88,13 +88,11 @@ def 发帖(one):
       title=帖信息['title']
       if msg=='':
         if title=='/* 话题已删除 */':
-          count+=1
-          发帖(count)
+          发帖(count+1)
         else:
           审核=False
   状态.append(发帖['status'])
-count=0
-发帖(count)
+发帖(0)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
 #  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
