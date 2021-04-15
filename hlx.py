@@ -10,8 +10,8 @@ for one in plist:
     title=one['title']
     title=re.sub('^【.*?】','',title)
     title=re.sub('^\[.*?\]','',title)
-    re=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()
-    content=re['post']['detail']
-    images=re['post']['images']
+    resp=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()
+    content=resp['post']['detail']
+    images=resp['post']['images']
     if not '<image>' in content:
       posts.append({'title':title,'content':content,'images':images})
