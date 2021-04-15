@@ -8,9 +8,10 @@ for one in plist:
   if one['isRich']==0 and one['isAppPost']==0:
     pid=one['postID']
     title=one['title']
-    title=re.sub('【.*?】','',title)
-    title=re.sub('[.*?]','',title)
+    title=re.sub('^【.*?】','',title)
+    title=re.sub('^\[.*?\]','',title)
     re=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()
     content=re['post']['detail']
     images=re['post']['images']
-    posts.append({'title':title,'content':content,'images':images})
+    if not '<image>' in content:
+      posts.append({'title':title,'content':content,'images':images})
