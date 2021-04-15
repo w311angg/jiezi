@@ -85,10 +85,17 @@ for one in 帖子:
   print('点赞：'+点赞['msg'])
   状态.append(点赞['status'])
 
-评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':40}).json()['comments']
-if len(评论)<=20:
-  随机评论=choice(评论)['text']
-回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':一言,'post_id':帖子[3]['postID'],'comment_id':0}).json()
+if 帖子[3]['commentCount']<=20:
+  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20}).json()['comments']
+else:
+  评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子[3]['postID'],'count':20,'start':20}).json()['comments']
+是楼主=True
+while 是楼主:
+  随机评论=choice(评论)
+  if 随机评论['userID']!=帖子[3]['user']['userID']:
+    评论内容=随机评论['text']
+    是楼主=False
+回复=requests.post('https://api.bbs.lieyou888.com/comment/create/ANDROID/1.0?_key='+密钥,data={'text':评论内容,'post_id':帖子[3]['postID'],'comment_id':0}).json()
 print('回复：'+回复['msg'])
 回复id=回复['commentID']
 状态.append(回复['status'])
