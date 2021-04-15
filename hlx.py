@@ -9,5 +9,7 @@ for one in plist:
     pid=one['postID']
     title=one['title']
     title=re.sub('【.*?】','',title)
-    content=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()['post']['detail']
-    posts.append({'title':title,'content':content})
+    re=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()
+    content=re['post']['detail']
+    images=re['post']['images']
+    posts.append({'title':title,'content':content,'images':images})
