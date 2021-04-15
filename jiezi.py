@@ -66,6 +66,7 @@ print('一元签到：'+一元签到['msg'])
 #print('一言：'+一言)
 #状态.append(1)
 def 发帖(one):
+  print(one)
   global 状态,count
   #print(hlx.posts)
   imgstr=''
@@ -88,7 +89,6 @@ def 发帖(one):
       if msg=='':
         if title=='/* 话题已删除 */':
           count+=1
-          print(one)
           发帖(count)
         else:
           审核=False
