@@ -4,7 +4,7 @@ plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count
 posts=[]
 
 for one in plist:
-  pid=str(one['postID'])
+  pid=one['postID']
   title=one['title']
-  content=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+pid)
+  content=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid))
   posts.append({'title':title,'content':content})
