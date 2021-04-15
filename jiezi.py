@@ -89,7 +89,7 @@ def 发帖(one):
         if title=='/* 话题已删除 */':
           count+=1
           发帖(count)
-        else
+        else:
           审核=False
   状态.append(发帖['status'])
 count=0
