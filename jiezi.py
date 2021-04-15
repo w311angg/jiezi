@@ -66,7 +66,7 @@ print('一元签到：'+一元签到['msg'])
 #print('一言：'+一言)
 #状态.append(1)
 def 发帖(count):
-  print(count)
+  #print(count)
   global 状态
   #print(hlx.posts)
   imgstr=''
