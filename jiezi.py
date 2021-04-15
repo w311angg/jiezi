@@ -66,7 +66,14 @@ print('一元签到：'+一元签到['msg'])
 #print('一言：'+一言)
 #状态.append(1)
 print(hlx.posts)
-发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['title'],'lat':0.0}).json()
+imgstr=''
+for one in hlx.posts[0]['images']:
+  image=requests.get(one).content
+  file={'file':image}
+  re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
+  url=re['fid']
+  imgstr+=url+','
+发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[0]['content'],'type':0,'title':'【资源分享】'+hlx.posts[0]['title'],'images':imgstr,'lat':0.0}).json()
 print('发帖：'+发帖['msg'])
 状态.append(发帖['status'])
 #if 发帖['status']==1:
