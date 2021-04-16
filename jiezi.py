@@ -85,8 +85,8 @@ def 发帖(count):
       time.sleep(10)
       帖信息=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'_key':密钥,'post_id':pid}).json()
       msg=帖信息['msg']
-      title=帖信息['post']['title']
       if msg=='':
+        title=帖信息['post']['title']
         if title=='/* 话题已删除 */':
           发帖(count+1)
         else:
