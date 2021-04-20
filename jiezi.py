@@ -116,6 +116,8 @@ for one in 帖子:
   if 回复数>40:
     评论=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'post_id':帖子id,'count':20,'start':20}).json()['comments']
     用户id=one['user']['userID']
+  else:
+    continue
   是楼主=True
   while 是楼主:
     随机评论=random.choice(评论)
