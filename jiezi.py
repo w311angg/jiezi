@@ -104,7 +104,7 @@ for i in range(3):
   print('分享：'+分享['msg'])
   状态.append(分享['status'])
 
-帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=92').json()['posts']
+帖子=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?cat_id=92&sort_by=2').json()['posts']
 for one in 帖子:
   点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
   print('点赞：'+点赞['msg'])
