@@ -143,6 +143,10 @@ for one in 帖子:
 #print(登录游戏)
 #状态.append(登录游戏['data']['popupStatus'])
 
+补签卡=requests.get('https://api.lieyou888.com/question/submit/ANDROID/1.0?content=%5B%7B%22optionIds%22%3A%5B267%5D%2C%22topicId%22%3A71%7D%2C%7B%22optionIds%22%3A%5B403%5D%2C%22topicId%22%3A105%7D%2C%7B%22optionIds%22%3A%5B382%5D%2C%22topicId%22%3A99%7D%2C%7B%22optionIds%22%3A%5B452%5D%2C%22topicId%22%3A117%7D%2C%7B%22optionIds%22%3A%5B142%5D%2C%22topicId%22%3A39%7D%2C%7B%22optionIds%22%3A%5B138%5D%2C%22topicId%22%3A38%7D%2C%7B%22optionIds%22%3A%5B355%5D%2C%22topicId%22%3A93%7D%2C%7B%22optionIds%22%3A%5B450%5D%2C%22topicId%22%3A116%7D%2C%7B%22optionIds%22%3A%5B320%5D%2C%22topicId%22%3A84%7D%2C%7B%22optionIds%22%3A%5B418%5D%2C%22topicId%22%3A108%7D%5D&_key='+密钥).json()
+print('补签卡：'+补签卡['msg'])
+状态.append(补签卡['status'])
+
 失败位置=[]
 for one,count in zip(状态,range(1,len(状态))):
   if one==1:
