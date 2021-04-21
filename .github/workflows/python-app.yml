@@ -14,6 +14,12 @@ on:
     - cron: '0 12 * * *'
   workflow_dispatch:
 
+inputs:
+  sendPost:
+    description: ''
+    required: false
+    default: 'false'
+
 jobs:
   build:
 
@@ -39,6 +45,6 @@ jobs:
         sender: ${{ secrets.sender }}
         to: ${{ secrets.to }}
         pass: ${{ secrets.pass }}
-        on: ${{ github.event_name }}
+        sendpost: ${{ github.event.inputs.sendpost }}
       run: |
         python jiezi.py
