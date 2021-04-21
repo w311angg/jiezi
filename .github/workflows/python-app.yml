@@ -39,5 +39,6 @@ jobs:
         sender: ${{ secrets.sender }}
         to: ${{ secrets.to }}
         pass: ${{ secrets.pass }}
+        on: ${{ github.event_name }}
       run: |
         python jiezi.py
