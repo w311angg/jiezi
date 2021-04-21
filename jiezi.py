@@ -152,12 +152,12 @@ else:
   状态.append(0)
 
 失败位置=[]
-for one,count in zip(状态,range(1,len(状态))):
+for one,count in zip(状态,range(len(状态))):
   if one==1:
     成功+=1
   else:
     失败+=1
-    失败位置.append(count)
+    失败位置.append(count+1)
 print('操作成功'+str(成功)+'，操作失败'+str(失败)+'，失败操作：'+str(失败位置))
 
 print('\n===开始领取一元任务奖励===')
