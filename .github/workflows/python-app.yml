@@ -13,12 +13,11 @@ on:
   schedule:
     - cron: '0 12 * * *'
   workflow_dispatch:
-
-inputs:
-  sendPost:
-    description: ''
-    required: false
-    default: 'false'
+    inputs:
+      sendPost:
+        description: ''
+        required: false
+        default: 'false'
 
 jobs:
   build:
