@@ -92,7 +92,8 @@ def 发帖(count):
         else:
           审核=False
   状态.append(发帖['status'])
-发帖(0)
+if os.getenv('on')=='schedule':
+  发帖(0)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
 #  删帖=requests.get('https://api.bbs.lieyou888.com/post/destroy/ANDROID/1.0?post_id='+str(帖子id)+'&_key='+密钥).json()
