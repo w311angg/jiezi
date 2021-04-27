@@ -45,5 +45,6 @@ jobs:
         to: ${{ secrets.to }}
         pass: ${{ secrets.pass }}
         sendpost: ${{ github.event.inputs.sendpost }}
+        on: ${{ github.event_name }}
       run: |
         python jiezi.py
