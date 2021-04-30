@@ -96,7 +96,7 @@ def 发帖(count):
         else:
           审核=False
   状态.append(发['status'])
-if os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
+if not os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
   发帖(0)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
