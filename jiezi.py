@@ -77,13 +77,13 @@ def 发帖(count):
     url=re['fid']
     imgstr+=url+','
   print(hlx.posts[count]['content'])
-  发帖=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[count]['content'],'type':0,'title':'【资源分享】'+hlx.posts[count]['title'],'images':imgstr,'lat':0.0}).json()
-  print('发帖：'+发帖['msg'])
-  if '发贴太快了' in 发帖['msg']:
+  发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[count]['content'],'type':0,'title':'【资源分享】'+hlx.posts[count]['title'],'images':imgstr,'lat':0.0}).json()
+  print('发帖：'+发['msg'])
+  if '发贴太快了' in 发['msg']:
     time.sleep(120)
     发帖(count)
-  if ('需要审核' in 发帖['msg']) or ('帖子含违规内容' in 发帖['msg']):
-    pid=发帖['postID']
+  if ('需要审核' in 发['msg']) or ('帖子含违规内容' in 发['msg']):
+    pid=发['postID']
     审核=True
     while 审核:
       time.sleep(10)
@@ -95,7 +95,7 @@ def 发帖(count):
           发帖(count+1)
         else:
           审核=False
-  状态.append(发帖['status'])
+  状态.append(发['status'])
 if os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
   发帖(0)
 #if 发帖['status']==1:
