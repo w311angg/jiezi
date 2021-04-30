@@ -79,9 +79,6 @@ def 发帖(count):
   print(hlx.posts[count]['content'])
   发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[count]['content'],'type':0,'title':'【资源分享】'+hlx.posts[count]['title'],'images':imgstr,'lat':0.0}).json()
   print('发帖：'+发['msg'])
-  if '发贴太快了' in 发['msg']:
-    time.sleep(120)
-    发帖(count)
   if ('需要审核' in 发['msg']) or ('帖子含违规内容' in 发['msg']):
     pid=发['postID']
     审核=True
@@ -92,6 +89,7 @@ def 发帖(count):
       if msg=='':
         title=帖信息['post']['title']
         if title=='/* 话题已删除 */':
+          time.sleep(120)
           发帖(count+1)
         else:
           审核=False
