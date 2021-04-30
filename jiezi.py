@@ -89,10 +89,12 @@ def 发帖(count):
       if msg=='':
         title=帖信息['post']['title']
         if title=='/* 话题已删除 */':
-          time.sleep(120)
           发帖(count+1)
         else:
           审核=False
+  elif '发贴太快了' in 发['msg']:
+    time.sleep(60)
+    发帖(count)
   状态.append(发['status'])
 if not os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
   发帖(0)
