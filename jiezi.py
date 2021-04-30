@@ -101,7 +101,7 @@ def 发帖(count):
     print(hlx.posts[count]['content'])
     print('::endgroup::')
     time.sleep(60*5)
-    print('计时完毕')
+    print('发帖：计时完毕')
     发帖(count+1)
   状态.append(发['status'])
 if os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
