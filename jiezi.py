@@ -42,13 +42,6 @@ print('\n===开始其他任务===')
 成功=0
 失败=0
 状态=[]
-if debug==0:
-  for i in range(5):
-    time.sleep(2)
-    #保持活跃度以成功云挂机签到
-    看社区=requests.get('https://api.bbs.lieyou888.com/post/list/ANDROID/1.1?_key='+密钥).json()
-    print('看社区：'+看社区['msg'])
-    状态.append(看社区['status'])
 云挂机回返=requests.post("https://api.lieyou888.com/signin/create/ANDROID/1.0?_key="+密钥).json()
 #云挂机回返['msg']=None
 if 云挂机回返['msg']!=None:
@@ -122,6 +115,9 @@ for one in 帖子:
   点赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
   print('点赞：'+点赞['msg'])
   状态.append(点赞['status'])
+  取赞=requests.get('https://api.bbs.lieyou888.com/post/praise/ANDROID/1.1?post_id='+str(one['postID'])+'&_key='+密钥).json()
+  print('取赞：'+取赞['msg'])
+  状态.append(取赞['status'])
 
 for one in 帖子:
   回复数=one['commentCount']
