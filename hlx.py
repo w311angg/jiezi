@@ -1,7 +1,7 @@
 import requests
 import re
 
-plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count=10&cat_id=43&tag_id=0&sort_by=2').json()['posts']
+plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count=10&cat_id=43&tag_id=0&sort_by=1').json()['posts']
 posts=[]
 
 for one in plist:
