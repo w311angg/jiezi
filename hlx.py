@@ -13,5 +13,5 @@ for one in plist:
     resp=requests.get('http://floor.huluxia.com/post/detail/ANDROID/2.3?post_id='+str(pid)).json()
     content=resp['post']['detail']
     images=resp['post']['images']
-    if not '<image>' in content:
+    if (not '<image>' in content) and (len(images)>=3):
       posts.append({'title':title,'content':content,'images':images})
