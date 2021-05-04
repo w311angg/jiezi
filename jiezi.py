@@ -94,7 +94,7 @@ def 发帖(count):
         #print(消息戳,发帖戳,消息戳>发帖戳)
         if 消息戳>发帖戳:
           text=i['content']['text']
-          print(text)
+          #print(text)
           if 标题 in text:
             在审核=False
             if '不能通过审核。' in text:
