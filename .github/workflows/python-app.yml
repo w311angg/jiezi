@@ -50,5 +50,4 @@ jobs:
         sendpost: ${{ github.event.inputs.sendpost }}
         on: ${{ github.event_name }}
       run: |
-        sed -i 's/print(/echo(/g' jiezi.py
         python jiezi.py
