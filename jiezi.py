@@ -7,7 +7,7 @@ import hlx
 import random
 from email.mime.text import MIMEText
 from email.utils import formataddr
-from pytools import echo
+from pytools import echo as print
 
 def mail():
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
