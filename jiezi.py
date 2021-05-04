@@ -89,6 +89,7 @@ def 发帖(count):
       msg=帖信息['msg']
       if msg=='':
         title=帖信息['post']['title']
+        print(title)
         if title=='/* 话题已删除 */':
           发帖(count+1)
         else:
