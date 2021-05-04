@@ -79,12 +79,12 @@ def 发帖(count):
   内容='hhhhghhhhhhhhhh'
   标题='hhhhghhhhhhhhhh'
   发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':内容,'type':0,'title':标题,'images':imgstr,'lat':0.0}).json()
-  帖id=发['postID']
-  with requests.get('https://api.bbs.lieyou888.com/postaudti/detail/ANDROID/1.0?post_id=%s&_key=%s'%(帖id,密钥)) as content:
-    post=content.json()['post']
-    发帖戳=post['createTime']
   print('发帖：'+发['msg'])
   if '需要审核' in 发['msg']:
+    帖id=发['postID']
+    with requests.get('https://api.bbs.lieyou888.com/postaudti/detail/ANDROID/1.0?post_id=%s&_key=%s'%(帖id,密钥)) as content:
+      post=content.json()['post']
+      发帖戳=post['createTime']
     在审核=True
     while 在审核:
       time.sleep(10)
