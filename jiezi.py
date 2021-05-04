@@ -88,7 +88,7 @@ def 发帖(count):
     在审核=True
     while 在审核:
       time.sleep(10)
-      消息=requests.get('https://api.bbs.lieyou888.com/message/new/list/ANDROID/1.3?_key='+密钥).json()['datas']
+      消息=requests.get('https://api.bbs.lieyou888.com/message/new/list/ANDROID/1.3?type_id=1&_key='+密钥).json()['datas']
       for i in 消息:
         消息戳=i['createTime']
         print(消息戳,发帖戳,消息戳>发帖戳)
