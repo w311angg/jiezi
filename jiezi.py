@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 from email.utils import formataddr
 
 sendpost=os.getenv('sendpost')
-sendpost='true'
+#sendpost='true'
 
 def mail():
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
@@ -76,8 +76,8 @@ def 发帖(count):
     imgstr+=url+','
   内容=hlx.posts[count]['content']
   标题='【资源分享】'+hlx.posts[count]['title']
-  内容='hhhhghhhhhhhhhh'
-  标题='hhhhghhhhhhhhhh'
+  #内容='hhhhghhhhhhhhhh'
+  #标题='hhhhghhhhhhhhhh'
   发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':内容,'type':0,'title':标题,'images':imgstr,'lat':0.0}).json()
   print('发帖：'+发['msg'])
   if '需要审核' in 发['msg']:
