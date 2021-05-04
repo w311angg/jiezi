@@ -11,6 +11,9 @@ from email.utils import formataddr
 sendpost=os.getenv('sendpost')
 sendpost='true'
 
+os.environ['TZ'] = 'Asia/Shanghai'
+time.tzset()
+
 def mail():
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
     msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
@@ -75,26 +78,28 @@ def 发帖(count):
     url=re['fid']
     imgstr+=url+','
   内容=hlx.posts[count]['content']
-  标题=hlx.posts[count]['title']
+  标题='【资源分享】'+hlx.posts[count]['title']
   内容='hhhhghhhhhhhhhh'
   标题='hhhhghhhhhhhhhh'
-  发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':内容,'type':0,'title':'【资源分享】'+标题,'images':imgstr,'lat':0.0}).json()
+  发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':内容,'type':0,'title':标题,'images':imgstr,'lat':0.0}).json()
+  发帖戳=int(time.time())
   print('发帖：'+发['msg'])
   if '需要审核' in 发['msg']:
     pid=发['postID']
-    审核=True
-    while 审核:
+    在审核=True
+    while 在审核:
       time.sleep(10)
-      帖信息=requests.get('https://api.bbs.lieyou888.com/post/detail/ANDROID/1.2',params={'_key':密钥,'post_id':pid}).json()
-      msg=帖信息['msg']
-      print(msg)
-      if msg=='':
-        title=帖信息['post']['title']
-        print(title)
-        if title=='/* 话题已删除 */':
-          发帖(count+1)
-        else:
-          审核=False
+      消息=requests.get('https://api.bbs.lieyou888.com/message/new/list/ANDROID/1.3?_key='+密钥).json()['datas']
+      for i in 消息:
+        消息戳=i['createTime']
+        if 消息戳>发帖戳:
+          text=i['content']['text']
+          if 标题 in text:
+            在审核=False
+            if '不能通过审核。' in text:
+              发帖(count+1)
+            elif '已通过审核。' in text:
+              pass
   elif '发贴太快了' in 发['msg']:
     time.sleep(60*5)
     print('发帖：计时完毕')
