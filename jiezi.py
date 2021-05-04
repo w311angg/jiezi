@@ -85,20 +85,23 @@ def 发帖(count):
     发帖戳=post['createTime']
   print('发帖：'+发['msg'])
   if '需要审核' in 发['msg']:
-    pid=发['postID']
     在审核=True
     while 在审核:
       time.sleep(10)
       消息=requests.get('https://api.bbs.lieyou888.com/message/new/list/ANDROID/1.3?_key='+密钥).json()['datas']
       for i in 消息:
         消息戳=i['createTime']
+        print(消息戳,发帖戳,消息戳>发帖戳)
         if 消息戳>发帖戳:
           text=i['content']['text']
+          print(text)
           if 标题 in text:
             在审核=False
             if '不能通过审核。' in text:
+              print('不能通过审核。')
               发帖(count+1)
             elif '已通过审核。' in text:
+              print('已通过审核。')
               pass
   elif '发贴太快了' in 发['msg']:
     time.sleep(60*5)
