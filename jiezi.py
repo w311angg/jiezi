@@ -8,6 +8,9 @@ import random
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
+sendpost=os.getenv('sendpost')
+sendpost='true'
+
 def mail():
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
     msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
@@ -71,7 +74,11 @@ def 发帖(count):
     re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
     url=re['fid']
     imgstr+=url+','
-  发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':hlx.posts[count]['content'],'type':0,'title':'【资源分享】'+hlx.posts[count]['title'],'images':imgstr,'lat':0.0}).json()
+  内容=hlx.posts[count]['content']
+  标题=hlx.posts[count]['title']
+  内容='hhhhghhhhhhhhhh'
+  标题='hhhhghhhhhhhhhh'
+  发=requests.post('https://api.bbs.lieyou888.com/post/create/ANDROID/1.0?_key='+密钥,data={'lng':0.0,'cat_id':92,'tag_id':'9202','detail':内容,'type':0,'title':'【资源分享】'+标题,'images':imgstr,'lat':0.0}).json()
   print('发帖：'+发['msg'])
   if '需要审核' in 发['msg']:
     pid=发['postID']
@@ -98,7 +105,7 @@ def 发帖(count):
     print('发帖：计时完毕')
     发帖(count+1)
   状态.append(发['status'])
-if os.getenv('sendpost')=='true' or os.getenv('on')=='schedule':
+if sendpost=='true' or os.getenv('on')=='schedule':
   发帖(0)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
