@@ -7,6 +7,8 @@ import hlx
 import random
 from email.mime.text import MIMEText
 from email.utils import formataddr
+from pytools import echo
+
 def mail():
     msg=MIMEText(str(云挂机回返),'plain','utf-8')
     msg['From']=formataddr(["jiezi",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
