@@ -36,9 +36,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Setup pytools
-      run: |
-        curl -O https://raw.githubusercontent.com/w311ang/pytools/main/pytools.py
     - name: Run
       env:
         key: ${{ secrets.key }}
@@ -50,4 +47,4 @@ jobs:
         sendpost: ${{ github.event.inputs.sendpost }}
         on: ${{ github.event_name }}
       run: |
-        python jiezi.py
+        python -u jiezi.py
