@@ -68,7 +68,7 @@ def 发帖(count):
   #print(hlx.posts)
   imgstr=''
   for one in hlx.posts[count]['images']:
-    time.sleep(3)
+    time.sleep(5)
     image=requests.get(one).content
     file={'file':image}
     re=requests.post('http://api.upload.lieyou888.com/upload/image?_key='+密钥,files=file).json()
@@ -91,17 +91,17 @@ def 发帖(count):
       消息=requests.get('https://api.bbs.lieyou888.com/message/new/list/ANDROID/1.3?type_id=1&_key='+密钥).json()['datas']
       for i in 消息:
         消息戳=i['createTime']
-        print(消息戳,发帖戳,消息戳>发帖戳)
+        #print(消息戳,发帖戳,消息戳>发帖戳)
         if 消息戳>发帖戳:
           text=i['content']['text']
           print(text)
           if 标题 in text:
             在审核=False
             if '不能通过审核。' in text:
-              print('不能通过审核。')
+              #print('不能通过审核。')
               发帖(count+1)
             elif '已通过审核。' in text:
-              print('已通过审核。')
+              #print('已通过审核。')
               pass
   elif '发贴太快了' in 发['msg']:
     time.sleep(60*5)
