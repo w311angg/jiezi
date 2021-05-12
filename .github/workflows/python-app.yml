@@ -38,7 +38,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Set hosts
       run: |
-        sudo echo '36.158.229.112 cdn.u1.huluxia.com' >> /etc/hosts
+        sudo echo '36.158.229.112 cdn.u1.huluxia.com' | sudo tee -a /etc/hosts
     - name: Run
       env:
         key: ${{ secrets.key }}
