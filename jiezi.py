@@ -157,6 +157,9 @@ for one in 帖子:
   状态.append(回复['status'])
   if 回复['code']==200:
     break
+  else:
+    time.sleep(60*5)
+    print('回复：计时完毕')
 #删回复=requests.get('https://api.bbs.lieyou888.com/comment/destroy/ANDROID/1.0?comment_id='+str(回复id)+'&_key='+密钥).json()
 #print('删回复：'+删回复['msg'])
 #状态.append(删回复['status'])
