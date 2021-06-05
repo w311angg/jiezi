@@ -44,9 +44,9 @@ jobs:
         key: ${{ secrets.key }}
         login: ${{ secrets.login }}
         id: ${{ secrets.id }}
-        sender: ${{ secrets.sender }}
-        to: ${{ secrets.to }}
-        pass: ${{ secrets.pass }}
+        sender: ${{ secrets.mail_account }}
+        to: ${{ secrets.mail_account }}
+        pass: ${{ secrets.mail_password }}
         sendpost: ${{ github.event.inputs.sendpost }}
         on: ${{ github.event_name }}
       run: |
