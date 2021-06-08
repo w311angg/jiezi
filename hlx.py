@@ -7,6 +7,7 @@ posts=[]
 ticks = time.time()*1000
 
 for one in plist:
+  print(ticks-one['createTime'],ticks,one['createTime'])
   if one['isRich']==0 and one['isAppPost']==0 and ticks-one['createTime']>10*60*60*1000:
     pid=one['postID']
     title=one['title']
