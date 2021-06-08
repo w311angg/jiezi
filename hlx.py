@@ -1,11 +1,13 @@
 import requests
 import re
+import time
 
-plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count=30&cat_id=43&tag_id=0&sort_by=1').json()['posts']
+plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count=100&cat_id=43&tag_id=0&sort_by=1').json()['posts']
 posts=[]
+ticks = time.time()
 
 for one in plist:
-  if one['isRich']==0 and one['isAppPost']==0:
+  if one['isRich']==0 and one['isAppPost']==0 and ticks-one['createTime']>10*60*60*1000:
     pid=one['postID']
     title=one['title']
     title=re.sub('^【.*?】','',title)
