@@ -4,7 +4,7 @@ import time
 
 plist=requests.get('http://floor.huluxia.com/post/list/ANDROID/2.1?start=0&count=100&cat_id=43&tag_id=0&sort_by=1').json()['posts']
 posts=[]
-ticks = time.time()
+ticks = time.time()*1000
 
 for one in plist:
   if one['isRich']==0 and one['isAppPost']==0 and ticks-one['createTime']>10*60*60*1000:
