@@ -3,7 +3,6 @@ import json
 import os
 import time
 import smtplib
-import hlx
 import random
 from email.mime.text import MIMEText
 from email.utils import formataddr
@@ -116,6 +115,7 @@ def 发帖(count):
     发帖(count+1)
   状态.append(发['status'])
 if sendpost=='true' or os.getenv('on')=='schedule':
+  import hlx
   发帖(0)
 #if 发帖['status']==1:
 #  帖子id=发帖['postID']
